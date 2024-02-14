@@ -31,7 +31,7 @@ O app deverá ser desenvolvido com React Native
 - Organização do código
 - Arquitetura utilizada
 - Criatividade no layout
-- Teste unitários *(OPCIONAL)*
+- Teste unitários **(Será um diferencial)**
 
 ## Processo de submissão
 
