@@ -36,9 +36,11 @@ O app deverá ser desenvolvido com React Native
 
 1. Criar um fork do projeto;
 2. Seguir o contexto da aplicação mencionada acima;
-3. Ao final fazer um pull request com os ajustes.
+3. Ao finalizar, fazer um pull request com os ajustes.
 
 **Observação**
 - A execução da avaliação tem um período de 24h contados a partir do recebimento do link pelo nosso RH.
   
 ## Boa sorte!
+
+
