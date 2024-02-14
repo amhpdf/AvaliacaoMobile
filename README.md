@@ -14,9 +14,10 @@ Você deverá desenvolver uma aplicação baseada na nossa página institucional
 ## Descrição geral
 
 - O aplicativo deve possuir 3 screens: Home, Notícias e Convênios.
-- Ao abrir o aplicativo, devem ser exibido os banners e as 4 últimas notícias.
+- Ao abrir o aplicativo, devem ser exibidos os banners e as 4 últimas notícias.
 - Ao abrir a tela de notícias, deve-se exibir as 8 últimas notícias.
-- Na tela de Convênios serão listados os convênios, todas as informações retornadas da API.
+- Na tela de Convênios serão listados os convênios.
+- Todas as informações deverão ser retornadas da API.
 
 ## Requisitos técnicos
 
