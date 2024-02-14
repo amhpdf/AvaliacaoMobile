@@ -21,8 +21,7 @@ Você deverá desenvolver uma aplicação baseada na nossa página institucional
 
 ## Requisitos técnicos
 
-O app deverá ser desenvolvido com React Native
-
+- **React Native**
 - **Typescript**.
 - **Styled Components** para estilização.
 - **Expo Router ou React Navigation** para implementação de rotas.
