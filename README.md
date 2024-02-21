@@ -39,7 +39,7 @@ Você deverá desenvolver uma aplicação baseada na nossa página institucional
 3. Ao finalizar, fazer um pull request com os ajustes.
 
 **Observação**
-- A execução da avaliação tem um período de 24h contados a partir do recebimento do link pelo nosso RH.
+- A execução da avaliação tem um período de 48h contados a partir do recebimento do link pelo nosso RH.
   
 ## Boa sorte!
 
