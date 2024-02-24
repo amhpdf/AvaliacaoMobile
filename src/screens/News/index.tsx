@@ -42,13 +42,16 @@ export const News: React.FC = () => {
   const renderItemNews: React.FC<types.newsItem> = React.useCallback(
     ({ item }) => (
       <>
-        <NewsImages source={{ uri: `data:image/png;base64,${item.imagem}` }} />
-        <NewsTime>
+        <NewsImages
+          source={{ uri: `data:image/png;base64,${item.imagem}` }}
+          testID="news-image"
+        />
+        <NewsTime testID="news-time">
           {format(item.dataCriacao, "dd MMM yyyy", {
             locale: ptBR,
           })}
         </NewsTime>
-        <NewsTitle>{item.titulo}</NewsTitle>
+        <NewsTitle testID="news-title">{item.titulo}</NewsTitle>
       </>
     ),
     []
@@ -59,7 +62,7 @@ export const News: React.FC = () => {
       <Content>
         <Title>Notícias</Title>
         {isLoading ? (
-          <Loading />
+          <Loading testID="loading" />
         ) : (
           <List
             data={newsData}
