@@ -21,7 +21,6 @@ export const Insurance: React.FC = () => {
     const insuranceApiUrl = "https://api-site.amhp.com.br/api/convenios/ativos";
     try {
       const { data } = await axios.get(insuranceApiUrl);
-      console.log("data :", data);
       setInsuranceData(data);
     } catch (error) {
       console.log(error);
