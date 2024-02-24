@@ -1,18 +1,19 @@
 import React from "react";
 import { Dimensions, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { Home } from "src/screens/Home";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SubTitle, Title } from "./styles";
-import typ from "./index.d";
+import { Home } from "src/screens/Home";
 import { News } from "src/screens/News";
+import { Insurance } from "src/screens/Insurance";
+import typ from "./index.d";
 
 const Drawer = createDrawerNavigator<typ.ParamList>();
 
 const Routes: React.FC<typ.ParamList> = () => (
   <NavigationContainer>
     <Drawer.Navigator
-      initialRouteName="Notícias"
+      initialRouteName="Convênios"
       screenOptions={{
         headerShown: true,
         drawerStyle: {
@@ -33,6 +34,7 @@ const Routes: React.FC<typ.ParamList> = () => (
     >
       <Drawer.Screen name="Início" component={Home} />
       <Drawer.Screen name="Notícias" component={News} />
+      <Drawer.Screen name="Convênios" component={Insurance} />
     </Drawer.Navigator>
   </NavigationContainer>
 );

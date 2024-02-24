@@ -8,5 +8,6 @@ export namespace AppStackProps {
   export type paramList = {
     Início: undefined;
     Notícias: undefined;
+    Convênios: undefined;
   };
 }
