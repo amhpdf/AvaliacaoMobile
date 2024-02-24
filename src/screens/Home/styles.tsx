@@ -11,18 +11,6 @@ export const Content = styled.View`
   flex-direction: column;
 `;
 
-export const Title = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.logo};
-`;
-
-export const SubTitle = styled.Text`
-  font-size: 12px;
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.grayDark};
-`;
-
 export const BannerContainer = styled.View`
   flex-direction: row;
   height: 180px;

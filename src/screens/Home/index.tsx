@@ -23,8 +23,6 @@ import {
   NewsTime,
   NewsTitle,
   Separator,
-  SubTitle,
-  Title,
 } from "./styles";
 import types from "./index.d";
 
@@ -33,10 +31,10 @@ export const Home: React.FC = () => {
   const [bannerData, setBannerData] = React.useState<Array<[]>>([]);
   const [newsData, setNewsData] = React.useState<Array<[]>>([]);
   const [activeSlide, setActiveSlide] = React.useState<number>(0);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading, setLoading] = React.useState<boolean>(false);
 
   const fetchData = React.useCallback(async () => {
-    setIsLoading(true);
+    setLoading(true);
     const bannerApiUrl = "https://api-site.amhp.com.br/api/banners/publicados";
     const newsApiUrl =
       "https://api-site.amhp.com.br/api/noticias/recentes-home/4";
@@ -46,13 +44,13 @@ export const Home: React.FC = () => {
         axios.get(bannerApiUrl),
         axios.get(newsApiUrl),
       ]);
-
       setBannerData(banner.data);
       setNewsData(news.data);
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
-      setIsLoading(false);
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -96,8 +94,6 @@ export const Home: React.FC = () => {
   return (
     <Container>
       <Content>
-        <Title>amhp</Title>
-        <SubTitle>Soluções integradas</SubTitle>
         <BannerContainer>
           {isLoading ? (
             <Loading />

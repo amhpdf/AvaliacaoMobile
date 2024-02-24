@@ -6,6 +6,7 @@ export default _;
 
 export namespace AppStackProps {
   export type paramList = {
-    Home: undefined;
+    Início: undefined;
+    Notícias: undefined;
   };
 }
