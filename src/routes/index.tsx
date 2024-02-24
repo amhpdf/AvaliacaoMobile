@@ -10,7 +10,7 @@ import typ from "./index.d";
 
 const Drawer = createDrawerNavigator<typ.ParamList>();
 
-const Routes: React.FC<typ.ParamList> = () => (
+const Routes: React.FC = () => (
   <NavigationContainer>
     <Drawer.Navigator
       initialRouteName="Convênios"
