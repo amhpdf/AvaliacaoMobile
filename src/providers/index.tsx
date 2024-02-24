@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { ThemeProvider, DefaultTheme } from "styled-components/native";
 import {
   Platform,
@@ -14,7 +14,7 @@ import types from "./index.d";
 const Providers: React.FC<types.Props> = ({ children }) => (
   <>
     <Statusbar />
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }} testID="providers-safe">
       <ThemeProvider theme={theme as DefaultTheme}>{children}</ThemeProvider>
     </SafeAreaView>
   </>
@@ -22,17 +22,15 @@ const Providers: React.FC<types.Props> = ({ children }) => (
 
 export { Providers };
 
-class Statusbar extends Component {
-  render() {
-    Platform.OS === "android" &&
-      StatusBar.setBackgroundColor(theme.colors.grayLight, true);
-    return (
-      <View style={styles.StatusBar}>
-        <StatusBar translucent barStyle="dark-content" />
-      </View>
-    );
-  }
-}
+const Statusbar: React.FC = () => {
+  Platform.OS === "android" &&
+    StatusBar.setBackgroundColor(theme.colors.grayLight, true);
+  return (
+    <View style={styles.StatusBar} testID="providers-status-bar">
+      <StatusBar translucent barStyle="dark-content" />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   StatusBar: {
