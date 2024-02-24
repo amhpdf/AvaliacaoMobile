@@ -1,5 +1,6 @@
 import { ListRenderItem } from "react-native";
 import React from "react";
+import { api } from "src/services/api";
 import {
   Container,
   Content,
@@ -9,19 +10,17 @@ import {
   Separator,
   Title,
 } from "./styles";
-import axios from "axios";
 import types from "./index.d";
 
 export const Insurance: React.FC = () => {
-  const [insuranceData, setInsuranceData] = React.useState<Array<[]>>([]);
+  const [insurancesData, setInsurancesData] = React.useState<Array<[]>>([]);
   const [isLoading, setLoading] = React.useState<boolean>(false);
 
   const fetchData = React.useCallback(async () => {
     setLoading(true);
-    const insuranceApiUrl = "https://api-site.amhp.com.br/api/convenios/ativos";
     try {
-      const { data } = await axios.get(insuranceApiUrl);
-      setInsuranceData(data);
+      const insurances = await api.getInsurance();
+      setInsurancesData(insurances);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -34,7 +33,7 @@ export const Insurance: React.FC = () => {
     fetchData();
   }, []);
 
-  const renderItemInsurance: React.FC<types.insuranceItem> = React.useCallback(
+  const renderItemInsurances: React.FC<types.insuranceItem> = React.useCallback(
     ({ item }) => (
       <InsuranceTitle testID="insurance-title">
         {item.nomeDivulgacao}
@@ -51,8 +50,8 @@ export const Insurance: React.FC = () => {
           <Loading testID="loading" />
         ) : (
           <List
-            data={insuranceData}
-            renderItem={renderItemInsurance as ListRenderItem<any>}
+            data={insurancesData}
+            renderItem={renderItemInsurances as ListRenderItem<any>}
             ItemSeparatorComponent={() => <Separator />}
           />
         )}

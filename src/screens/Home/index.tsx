@@ -1,8 +1,8 @@
 import React from "react";
 import { Linking, ListRenderItem } from "react-native";
-import axios from "axios";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { api } from "src/services/api";
 import {
   BannerContainer,
   BannerContainerIndicator,
@@ -27,7 +27,6 @@ import {
 import types from "./index.d";
 
 export const Home: React.FC = () => {
-  axios.defaults.timeout = 60000;
   const [bannerData, setBannerData] = React.useState<Array<[]>>([]);
   const [newsData, setNewsData] = React.useState<Array<[]>>([]);
   const [activeSlide, setActiveSlide] = React.useState<number>(0);
@@ -35,17 +34,12 @@ export const Home: React.FC = () => {
 
   const fetchData = React.useCallback(async () => {
     setLoading(true);
-    const bannerApiUrl = "https://api-site.amhp.com.br/api/banners/publicados";
-    const newsApiUrl =
-      "https://api-site.amhp.com.br/api/noticias/recentes-home/4";
 
     try {
-      const [banner, news] = await axios.all([
-        axios.get(bannerApiUrl),
-        axios.get(newsApiUrl),
-      ]);
-      setBannerData(banner.data);
-      setNewsData(news.data);
+      const banners = await api.getBanners();
+      const news = await api.getNews4();
+      setBannerData(banners);
+      setNewsData(news);
     } catch (error) {
       console.log(error);
       setLoading(false);

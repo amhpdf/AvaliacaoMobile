@@ -11,22 +11,21 @@ import {
   Separator,
   Title,
 } from "./styles";
-import axios from "axios";
 import types from "./index.d";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { api } from "src/services/api";
 
 export const News: React.FC = () => {
-  axios.defaults.timeout = 100000;
   const [newsData, setNewsData] = React.useState<Array<[]>>([]);
   const [isLoading, setLoading] = React.useState<boolean>(false);
 
   const fetchData = React.useCallback(async () => {
     setLoading(true);
-    const newsApiUrl = "https://api-site.amhp.com.br/api/noticias/recentes/8";
+
     try {
-      const { data } = await axios.get(newsApiUrl);
-      setNewsData(data);
+      const news = await api.getNews8();
+      setNewsData(news);
     } catch (error) {
       console.log(error);
       setLoading(false);
