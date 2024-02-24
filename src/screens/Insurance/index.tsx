@@ -35,7 +35,11 @@ export const Insurance: React.FC = () => {
   }, []);
 
   const renderItemInsurance: React.FC<types.insuranceItem> = React.useCallback(
-    ({ item }) => <InsuranceTitle>{item.nomeDivulgacao}</InsuranceTitle>,
+    ({ item }) => (
+      <InsuranceTitle testID="insurance-title">
+        {item.nomeDivulgacao}
+      </InsuranceTitle>
+    ),
     []
   );
 
@@ -44,7 +48,7 @@ export const Insurance: React.FC = () => {
       <Content>
         <Title>Convênios</Title>
         {isLoading ? (
-          <Loading />
+          <Loading testID="loading" />
         ) : (
           <List
             data={insuranceData}
