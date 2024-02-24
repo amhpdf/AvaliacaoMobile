@@ -1,10 +1,157 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Linking, ListRenderItem } from "react-native";
+import axios from "axios";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import {
+  BannerContainer,
+  BannerContainerIndicator,
+  BannerImages,
+  BannerIndicator,
+  BannerTouchable,
+  Banners,
+  Container,
+  Content,
+  LatestNews,
+  Loading,
+  News,
+  NewsButton,
+  NewsButtonTitle,
+  NewsContainer,
+  NewsContainerImages,
+  NewsImages,
+  NewsTime,
+  NewsTitle,
+  Separator,
+  SubTitle,
+  Title,
+} from "./styles";
+import types from "./index.d";
 
 export const Home: React.FC = () => {
+  axios.defaults.timeout = 60000;
+  const [bannerData, setBannerData] = React.useState<Array<[]>>([]);
+  const [newsData, setNewsData] = React.useState<Array<[]>>([]);
+  const [activeSlide, setActiveSlide] = React.useState<number>(0);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  const fetchData = React.useCallback(async () => {
+    setIsLoading(true);
+    const bannerApiUrl = "https://api-site.amhp.com.br/api/banners/publicados";
+    const newsApiUrl =
+      "https://api-site.amhp.com.br/api/noticias/recentes-home/4";
+
+    try {
+      const [banner, news] = await axios.all([
+        axios.get(bannerApiUrl),
+        axios.get(newsApiUrl),
+      ]);
+
+      setBannerData(banner.data);
+      setNewsData(news.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    fetchData();
+  }, []);
+
+  const renderItemBanner: React.FC<types.BannerItem> = React.useCallback(
+    ({ item }) => (
+      <BannerTouchable
+        onPress={() => {
+          if (item.linkRedirecionamento) {
+            Linking.openURL(item.linkRedirecionamento);
+          }
+        }}
+      >
+        <BannerImages source={{ uri: item.urlImagemMobile }} />
+      </BannerTouchable>
+    ),
+    []
+  );
+
+  const renderItemNews: React.FC<types.newsItem> = React.useCallback(
+    ({ item }) => (
+      <>
+        <NewsImages source={{ uri: `data:image/png;base64,${item.imagem}` }} />
+        <NewsTime>
+          {format(item.dataCriacao, "dd MMM yyyy", {
+            locale: ptBR,
+          })}
+        </NewsTime>
+        <NewsTitle>{item.titulo}</NewsTitle>
+        <NewsButton>
+          <NewsButtonTitle>Saiba mais</NewsButtonTitle>
+        </NewsButton>
+      </>
+    ),
+    []
+  );
+
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <Container>
+      <Content>
+        <Title>amhp</Title>
+        <SubTitle>Soluções integradas</SubTitle>
+        <BannerContainer>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <Banners
+              data={bannerData}
+              renderItem={renderItemBanner as ListRenderItem<any>}
+              sliderWidth={300}
+              itemWidth={270}
+              layout={"default"}
+              loop
+              autoplay
+              autoplayDelay={3000}
+              autoplayInterval={3000}
+              onSnapToItem={(index) => setActiveSlide(index)}
+            />
+          )}
+        </BannerContainer>
+        <BannerContainerIndicator>
+          <BannerIndicator
+            activeDotIndex={activeSlide}
+            dotsLength={bannerData.length}
+            dotStyle={{
+              width: 5,
+              height: 5,
+              backgroundColor: "#324c8f",
+            }}
+          />
+        </BannerContainerIndicator>
+        <Separator />
+        <NewsContainer>
+          <LatestNews>
+            Últimas {" \n"}
+            <LatestNews>Notícias</LatestNews>
+          </LatestNews>
+          <NewsContainerImages>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <News
+                data={newsData}
+                renderItem={renderItemNews as ListRenderItem<any>}
+                sliderWidth={290}
+                itemWidth={270}
+                layout={"default"}
+                loop
+                autoplay
+                autoplayDelay={3000}
+                autoplayInterval={3000}
+              />
+            )}
+          </NewsContainerImages>
+        </NewsContainer>
+      </Content>
+    </Container>
   );
 };
