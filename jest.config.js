@@ -7,5 +7,7 @@ module.exports = {
   modulePaths: ["<rootDir>"],
   moduleDirectories: ["node_modules", "./__test__/helpers"],
   modulePathIgnorePatterns: ["mocks"],
-  
+  transformIgnorePatterns: [
+    "node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)",
+  ],
 };

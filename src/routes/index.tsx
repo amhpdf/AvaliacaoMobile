@@ -13,7 +13,7 @@ const Drawer = createDrawerNavigator<typ.ParamList>();
 const Routes: React.FC = () => (
   <NavigationContainer>
     <Drawer.Navigator
-      initialRouteName="Convênios"
+      initialRouteName="Início"
       screenOptions={{
         headerShown: true,
         drawerStyle: {

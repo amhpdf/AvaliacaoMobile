@@ -66,8 +66,12 @@ export const Home: React.FC = () => {
             Linking.openURL(item.linkRedirecionamento);
           }
         }}
+        testID="banner-touchable"
       >
-        <BannerImages source={{ uri: item.urlImagemMobile }} />
+        <BannerImages
+          source={{ uri: item.urlImagemMobile }}
+          testID="banner-image"
+        />
       </BannerTouchable>
     ),
     []
@@ -76,15 +80,20 @@ export const Home: React.FC = () => {
   const renderItemNews: React.FC<types.newsItem> = React.useCallback(
     ({ item }) => (
       <>
-        <NewsImages source={{ uri: `data:image/png;base64,${item.imagem}` }} />
-        <NewsTime>
+        <NewsImages
+          source={{ uri: `data:image/png;base64,${item.imagem}` }}
+          testID="news-image"
+        />
+        <NewsTime testID="news-time">
           {format(item.dataCriacao, "dd MMM yyyy", {
             locale: ptBR,
           })}
         </NewsTime>
-        <NewsTitle>{item.titulo}</NewsTitle>
+        <NewsTitle testID="news-title">{item.titulo}</NewsTitle>
         <NewsButton>
-          <NewsButtonTitle>Saiba mais</NewsButtonTitle>
+          <NewsButtonTitle testID="news-button-title">
+            Saiba mais
+          </NewsButtonTitle>
         </NewsButton>
       </>
     ),
@@ -96,7 +105,7 @@ export const Home: React.FC = () => {
       <Content>
         <BannerContainer>
           {isLoading ? (
-            <Loading />
+            <Loading testID="loading-banner" />
           ) : (
             <Banners
               data={bannerData}
@@ -112,7 +121,7 @@ export const Home: React.FC = () => {
             />
           )}
         </BannerContainer>
-        <BannerContainerIndicator>
+        <BannerContainerIndicator testID="banner-indicator">
           <BannerIndicator
             activeDotIndex={activeSlide}
             dotsLength={bannerData.length}
@@ -123,7 +132,7 @@ export const Home: React.FC = () => {
             }}
           />
         </BannerContainerIndicator>
-        <Separator />
+        <Separator testID="separator" />
         <NewsContainer>
           <LatestNews>
             Últimas {" \n"}
@@ -131,7 +140,7 @@ export const Home: React.FC = () => {
           </LatestNews>
           <NewsContainerImages>
             {isLoading ? (
-              <Loading />
+              <Loading testID="loading-news" />
             ) : (
               <News
                 data={newsData}
