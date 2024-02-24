@@ -118,6 +118,8 @@ export const Home: React.FC = () => {
               autoplayDelay={3000}
               autoplayInterval={3000}
               onSnapToItem={(index) => setActiveSlide(index)}
+              initialNumToRender={1}
+              removeClippedSubviews
             />
           )}
         </BannerContainer>
@@ -152,6 +154,8 @@ export const Home: React.FC = () => {
                 autoplay
                 autoplayDelay={3000}
                 autoplayInterval={3000}
+                initialNumToRender={5}
+                removeClippedSubviews
               />
             )}
           </NewsContainerImages>

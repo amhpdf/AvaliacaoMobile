@@ -1,4 +1,4 @@
-import { ListRenderItem, Text, View } from "react-native";
+import { ListRenderItem } from "react-native";
 import React from "react";
 import {
   Container,
@@ -68,6 +68,8 @@ export const News: React.FC = () => {
             data={newsData}
             renderItem={renderItemNews as ListRenderItem<any>}
             ItemSeparatorComponent={() => <Separator />}
+            initialNumToRender={5}
+            removeClippedSubviews
           />
         )}
       </Content>
