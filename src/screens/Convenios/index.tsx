@@ -12,7 +12,6 @@ const ConveniosScreen = () => {
     getConvenios();
   }, []);
 
-
   if (isLoading) {
     return (
       <S.Container>
