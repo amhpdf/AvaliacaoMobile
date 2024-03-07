@@ -7,6 +7,16 @@ jest.mock("../../src/hooks/useHome", () => ({
 }));
 
 describe("HomeScreen", () => {
+  const originalError = console.error; 
+
+  beforeAll(() => {
+    console.error = jest.fn(); // Warning: An update to BaseLayout inside a test was not wrapped in act(...).
+  });
+
+  afterAll(() => {
+    console.error = originalError;
+  });
+
   const mockedUseHome = useHome as jest.Mock;
 
   const mockValue = {
