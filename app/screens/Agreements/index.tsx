@@ -3,7 +3,7 @@ import { Container } from './styles';
 import CardList from '../../components/CardList';
 import { getAgreements } from '../../services/api';
 import { IAgreements } from '../../services/api/types';
-import { View, Text } from 'react-native';
+import Loading from '../../components/Loading';
 
 const Agreements = () => {
   const [agreements, setAgreements] = useState<IAgreements[]>([]);
@@ -19,11 +19,7 @@ const Agreements = () => {
   })
 
   if (loading) {
-    return (
-       <View>
-        <Text>Loading</Text>
-       </View>
-    )
+    return <Loading />
   }
   return (
     <Container>

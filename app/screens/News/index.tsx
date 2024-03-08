@@ -1,9 +1,10 @@
-import { ScrollView, Text, FlatList, View } from 'react-native';
+import { Text, FlatList, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Container } from "./styles";
 import NewsCard from "../../components/NewsCard";
 import { getNewsRecent } from '../../services/api';
 import { INewsRecent } from '../../services/api/types';
+import Loading from '../../components/Loading';
 
 const News = () => {
   const [news, setNews] = useState<INewsRecent[]>([]);
@@ -22,12 +23,7 @@ const News = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <View>
-        <Text>Loading</Text> 
-        {/* Wip loading */}
-      </View>
-    )
+    return <Loading/>
   }
 
   return (
