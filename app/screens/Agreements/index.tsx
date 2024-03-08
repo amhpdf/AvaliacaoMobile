@@ -1,23 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Container, Title } from "./styles";
 
 const Agreements = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Agreements content</Text>
-    </View>
+    <Container>
+      <Title>Agreements content</Title>
+    </Container>
   )
 }
 
 export default Agreements;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16
-  }
-})

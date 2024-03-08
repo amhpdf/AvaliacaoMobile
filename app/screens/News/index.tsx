@@ -1,23 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Container, Title } from "./styles";
 
 const News = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>News content</Text>
-    </View>
+    <Container>
+      <Title>News content</Title>
+    </Container>
   )
 }
 
 export default News;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16
-  }
-})
