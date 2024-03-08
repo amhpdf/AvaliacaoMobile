@@ -13,4 +13,8 @@ const getNewsRecent = async (quantity: number) => {
   return Api.get(`/noticias/recentes/${quantity}`);
 }
 
-export { getBanners, getNewsRecent };
+const getNewsRecentHome = async (quantity: number) => {
+  return Api.get(`/noticias/recentes-home/${quantity}`);
+}
+
+export { getBanners, getNewsRecent, getNewsRecentHome };

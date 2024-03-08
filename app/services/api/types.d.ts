@@ -12,3 +12,5 @@ export interface INewsRecent {
   titulo: string,
   resumo: string,
 }
+
+export interface INewsRecentHome extends INewsRecent {}
