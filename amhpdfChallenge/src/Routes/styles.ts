@@ -8,3 +8,8 @@ export const StyledHeader = styled.View`
     padding: 8px;
     elevation: 1
 `;
+
+export const HeaderImage = styled.Image`
+    width: 120px;
+    flex: 1;
+`;
