@@ -1,16 +1,31 @@
-import { Dimensions } from "react-native";
+import React, { useState, useEffect } from 'react'
+import { Dimensions, View, Text } from "react-native";
 import { Container } from "./styles";
 import Carousel from "react-native-snap-carousel";
 import CarouselCardItem from "../../components/CarouselCardItem";
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = SLIDER_WIDTH * 0.88;
-import data from "../../api/mock";
+import { getBanners } from '../../services/api';
+import { IBanner } from '../../services/api/types';
+import { IImage } from './types';
 
 const Home = () => {
+  const [banners, setBanners] = useState<IImage[]>([]);
+  useEffect(() => {
+    const getData = async () => {
+      const result = await getBanners();
+      const mountData: IImage[] = result.data.map((item: IBanner): Object => {
+        return { imgUrl: item.urlImagemMobile }
+      });
+      setBanners(mountData);
+    }
+    getData();
+  }, []);
+
   return (
     <Container>
       <Carousel 
-        data={data}
+        data={banners}
         renderItem={CarouselCardItem}
         sliderHeight={200}
         sliderWidth={SLIDER_WIDTH}
@@ -19,7 +34,7 @@ const Home = () => {
         useScrollView={true}
         autoplay={true}
         loop={true}
-        autoplayDelay={2600}
+        autoplayDelay={2000}
         autoplayInterval={3000}
       />
     </Container>

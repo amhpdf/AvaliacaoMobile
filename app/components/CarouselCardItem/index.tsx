@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { IPropsCardItem } from '../types';
+import { IPropsCardItem } from './types';
 import { Img } from './styles';
 
 const CarouselCardItem = ({item, index}: IPropsCardItem) => {
