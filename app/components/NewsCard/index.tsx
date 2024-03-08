@@ -5,12 +5,15 @@ import { CardContainer, CardImageModal, CardImage, Paragraph, TextContainer, Tit
 import CloseButton from '../CloseButton';
 import { INewsCardProps } from './types';
 
-const StyledNewsCard = ({ imageUrl, title, paragraph }: INewsCardProps) => {
+const StyledNewsCard = ( { data: { imagem: imageUrl, titulo: title, resumo: paragraph } }: INewsCardProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const base64Image = imageUrl;
+  const imageData = `data:image/jpeg;base64,${base64Image}`;
+
   return (
     <View>
       <CardContainer onPress={() => setIsModalVisible(true)}>
-        <CardImage source={{ uri: imageUrl }} />
+        <CardImage source={{ uri: imageData }} />
         <TextContainer>
         <Title>{title}</Title>
         <Paragraph numberOfLines={3}>{paragraph}</Paragraph>
@@ -19,7 +22,7 @@ const StyledNewsCard = ({ imageUrl, title, paragraph }: INewsCardProps) => {
         <Modal visible={isModalVisible}>
           <ScrollView>
             <CardContainerModal>
-              <CardImageModal source={{ uri: imageUrl }} />
+              <CardImageModal source={{ uri: imageData }} />
               <TextContainer>
               <Title>{title}</Title>
               <Paragraph>{paragraph}</Paragraph>

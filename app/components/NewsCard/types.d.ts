@@ -1,5 +1,7 @@
 export interface INewsCardProps {
-  imageUrl: string;
-  title: string;
-  paragraph: string;
+  data: {
+    imagem: string;
+    titulo: string;
+    resumo: string;
+  }
 }
