@@ -1,0 +1,17 @@
+{
+    "banners": [
+      { "id": 1, "image": "banner1.jpg" },
+      { "id": 2, "image": "banner2.jpg" },
+      { "id": 3, "image": "banner3.jpg" }
+    ],
+    "noticias": [
+      { "id": 1, "title": "Unindo Forças: Projeto AMHP Visitas impulsiona inovação e relacionamento com as Clínicas Associadas", "image": "banner1.jpg"},
+      { "id": 2, "title": "Reunião sobre Liderança Transformadora com o time de Coordenadores da AMHP", "image": "banner1.jpg" },
+      { "id": 3, "title": "Capacitação profissional: AMHP, em parceria com a UNICRED, oferece curso para fortalecimento da Gestão Administrativa das Clínicas Associadas", "image": "banner1.jpg" },
+      { "id": 4, "title": "Programa Parceiros para Excelência: 6 anos de parceria entre a  AMHP e Fundação Dom Cabral", "image": "banner1.jpg" },
+      { "id": 5, "title": "Curso para secretárias, realizado pela AMHP com o apoio da UNICRED, tem sido um grande sucesso!", "image": "banner1.jpg" },
+      { "id": 6, "title": "Dia da Secretária: A AMHP, com o apoio da UNICRED, promoverá um curso online, gratuito e com emissão de certificado ", "image": "banner1.jpg" },
+      { "id": 7, "title": "AMHP Visitas: Projeto contribui com a potencialização dos resultados das Clínicas Associadas  ", "image": "banner1.jpg" },
+      { "id": 8, "title": " AMHP Treinamentos: Uma plataforma de tutoriais em vídeo disponível no Portal do Associado ", "image": "banner1.jpg" }
+    ]
+  }
