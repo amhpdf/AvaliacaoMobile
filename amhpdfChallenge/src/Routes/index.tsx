@@ -4,10 +4,22 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Home from '../Pages/Home';
 import Insurances from '../Pages/Insurances';
 import News from '../Pages/News';
+import { Image } from 'react-native';
+import { StyledHeader } from './styles';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
+
+    const Header = () => {
+
+        return (
+            <StyledHeader>
+                <Image source={require('../../assets/amhplogo.png')} resizeMode='contain' style={{ width: 120, flex: 1 }} />
+            </StyledHeader>
+        );
+    }
+
   return (
     <Tab.Navigator screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
@@ -31,8 +43,8 @@ export default function TabNavigator() {
 
             return <Icon name={iconName} color="black" size={24} />;
         },
-        headerShown: false,
-        tabBarStyle: { paddingTop: 2, paddingBottom: 2 }
+        tabBarStyle: { paddingTop: 2, paddingBottom: 2 },
+        header: () => <Header />
     })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Notícias" component={News} />
