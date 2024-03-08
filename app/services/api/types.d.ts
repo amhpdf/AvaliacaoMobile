@@ -13,4 +13,10 @@ export interface INewsRecent {
   resumo: string,
 }
 
+export interface IAgreements {
+  id: number,
+  apelido: string,
+  nomeDivulgacao: string
+}
+
 export interface INewsRecentHome extends INewsRecent {}

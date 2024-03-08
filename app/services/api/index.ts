@@ -17,4 +17,8 @@ const getNewsRecentHome = async (quantity: number) => {
   return Api.get(`/noticias/recentes-home/${quantity}`);
 }
 
-export { getBanners, getNewsRecent, getNewsRecentHome };
+const getAgreements = async () => {
+  return Api.get("/convenios/ativos");
+}
+
+export { getBanners, getNewsRecent, getNewsRecentHome, getAgreements };
