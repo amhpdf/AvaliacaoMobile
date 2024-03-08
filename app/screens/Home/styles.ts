@@ -10,4 +10,5 @@ export const Title = styled.Text`
   font-weight: bold;
   margin-bottom: 16px;
   margin-top: 16px;
+  font-family: ${ props => props.theme.fonts.regular};
 `;

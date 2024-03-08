@@ -1,6 +1,7 @@
 import "react-native-gesture-handler";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme"
+import loadFonts from "./theme/fonts";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Home, Agreements, News } from "./screens";
@@ -8,6 +9,7 @@ import { Home, Agreements, News } from "./screens";
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+  loadFonts();
   return (
     <ThemeProvider theme={theme}>
     <NavigationContainer>
