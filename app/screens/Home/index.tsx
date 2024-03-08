@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Dimensions, View, Text } from "react-native";
+import { Dimensions } from "react-native";
 import { Container } from "./styles";
 import Carousel from "react-native-snap-carousel";
 import CarouselCardItem from "../../components/CarouselCardItem";
@@ -24,20 +24,20 @@ const Home = () => {
 
   return (
     <Container>
-      <Carousel 
+      <Carousel
         data={banners}
         renderItem={CarouselCardItem}
-        sliderHeight={200}
+        sliderHeight={250}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={ITEM_WIDTH}
-        itemHeight={200}
+        itemHeight={250}
         useScrollView={true}
         autoplay={true}
         loop={true}
         autoplayDelay={2000}
         autoplayInterval={3000}
       />
-    </Container>
+</Container>
   )
 }
 
