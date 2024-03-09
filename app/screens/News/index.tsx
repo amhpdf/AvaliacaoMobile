@@ -1,6 +1,6 @@
-import { Text, FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
-import { Container } from "./styles";
+import { Container, SectionTitle, Title } from "./styles";
 import NewsCard from "../../components/NewsCard";
 import { getNewsRecent } from '../../services/api';
 import { INewsRecent } from '../../services/api/types';
@@ -28,6 +28,9 @@ const News = () => {
 
   return (
     <Container>
+      <SectionTitle>
+        <Title>Notícias Recentes</Title>
+      </SectionTitle>
       { <FlatList
        data={news}
        keyExtractor={item => String(item.id)}
