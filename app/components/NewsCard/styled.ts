@@ -45,10 +45,12 @@ export const Title = styled.Text`
   font-size: 20px;
   margin-bottom: 6px;
   color: #333;
+  font-family: ${props => props.theme.fonts.regular};
 `;
 
 export const Paragraph = styled.Text`
   font-size: 16px;
   color: #666;
   line-height: 22px;
+  font-family: ${props => props.theme.fonts.light};
 `;

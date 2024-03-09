@@ -14,9 +14,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="News" component={News}/>
-        <Drawer.Screen name="Agreements" component={Agreements}/>
+        <Drawer.Screen name="Início" component={Home} />
+        <Drawer.Screen name="Notícias" component={News}/>
+        <Drawer.Screen name="Convênios" component={Agreements}/>
       </Drawer.Navigator>
     </NavigationContainer>
     </ThemeProvider>
